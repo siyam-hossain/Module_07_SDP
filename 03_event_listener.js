@@ -22,12 +22,39 @@ const handleSearch = (event)=>{
 
     //creating element(tag) using javascript
     const p = document.createElement("p");
+
+    //give a class name to tag: tagName.classList.add(className)
+    p.classList.add("child");
+
+
     //append p tag with input value
     p.innerText = inputValue;
     // console.log(p);
 
+    //append comment-container
     container.appendChild(p);
 
     //clear input field
     document.getElementById("inputField").value = "";
+
+
+
+    const allComments = document.getElementsByClassName("child"); //class can hold collection of an array
+
+    //iterate that array using for of loop
+    for (const element of allComments) {
+        // console.log(element);
+        element.addEventListener(
+            "click",
+            (event)=>{
+                // console.log(event.target);//target that element
+                // console.log(event.target.parentNode);//can access parent 
+
+
+                //remove child from parent
+                event.target.parentNode.removeChild(element);
+            }
+        
+        )
+    }
 }
